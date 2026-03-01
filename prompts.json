@@ -1,346 +1,131 @@
 [
-  {
-    "seg": 0,
-    "prompt": "professional podcast host speaking into studio microphone, modern dark tech studio, neon blue ambient lighting, cinematic wide shot"
-  },
-  {
-    "seg": 1,
-    "prompt": "dark enterprise server room with amber warning indicator lights on monitoring dashboards, silent tension atmosphere, dramatic cinematic"
-  },
-  {
-    "seg": 2,
-    "prompt": "panoramic aerial view of modern technology district, silicon valley skyline at golden hour with illuminated office towers"
-  },
-  {
-    "seg": 3,
-    "prompt": "corporate executive in suit at conference table looking away from warning alerts on monitors behind them, oblivious, soft dramatic lighting"
-  },
-  {
-    "seg": 4,
-    "prompt": "exhausted software developer resting forehead on hand at desk with multiple monitors showing dense code, dim office lighting"
-  },
-  {
-    "seg": 5,
-    "prompt": "old abandoned legacy code on dark monitor screen, green glowing tangled spaghetti code, cobwebs overlay, eerie dim lighting"
-  },
-  {
-    "seg": 6,
-    "prompt": "split screen comparing messy tangled code on left to clean organized code on right, refactoring transformation concept, bright modern aesthetic"
-  },
-  {
-    "seg": 7,
-    "prompt": "elegant hourglass with golden digital particles flowing, cinematic transition moment, time passage concept, warm and blue tones"
-  },
-  {
-    "seg": 8,
-    "prompt": "artistic clock hands spinning backwards, retro computing elements fading into modern tech, blue and purple vortex, time reversal"
-  },
-  {
-    "seg": 9,
-    "prompt": "nostalgic early 2000s office with CRT monitors and beige computers on desks, vintage computing era, warm retro film grain"
-  },
-  {
-    "seg": 10,
-    "prompt": "retail shelves stacked with colorful boxed software and shrink-wrapped CD-ROM packages, retro IT mall, warm fluorescent lighting"
-  },
-  {
-    "seg": 11,
-    "prompt": "close-up of messy unreadable spaghetti code with red syntax error highlights on old CRT monitor, debugging frustration"
-  },
-  {
-    "seg": 12,
-    "prompt": "hand carefully placing sealed software CD-ROM into a shipping box, final product delivery, no updates possible, close-up"
-  },
-  {
-    "seg": 13,
-    "prompt": "analog pressure gauge needle at maximum, tense deadline atmosphere, developer working under intense schedule, amber and red tones"
-  },
-  {
-    "seg": 14,
-    "prompt": "detailed software architecture blueprint with UML diagrams drawn on a large whiteboard, careful planning session, blue technical drawings"
-  },
-  {
-    "seg": 15,
-    "prompt": "colorful agile scrum board full of post-it notes in a modern startup office, sprint planning in progress, energetic bright"
-  },
-  {
-    "seg": 16,
-    "prompt": "abstract visualization of fast-moving data streams, deployment pipeline with neon blue speed lines, continuous delivery concept art"
-  },
-  {
-    "seg": 17,
-    "prompt": "bold motivational text on office wall saying Move Fast, scattered puzzle pieces on the ground around it, modern tech office"
-  },
-  {
-    "seg": 18,
-    "prompt": "blurred motion of a person sprinting through a hallway past scattered items on floor, tunnel vision speed blur, dynamic"
-  },
-  {
-    "seg": 19,
-    "prompt": "scattered mechanical gear parts and tools left unrepaired on a workshop table, neglected maintenance, dusty workbench, still life"
-  },
-  {
-    "seg": 20,
-    "prompt": "digital code blocks slowly separating and drifting apart like puzzle pieces coming undone, fragmentation concept, dark background"
-  },
-  {
-    "seg": 21,
-    "prompt": "tall glass corporate building with visible cracks spreading across its facade, digital glitch texture overlay, dramatic twilight sky"
-  },
-  {
-    "seg": 22,
-    "prompt": "glowing thought bubble expanding above a contemplative person, imagination beginning, soft dreamy bokeh, warm pastel tones"
-  },
-  {
-    "seg": 23,
-    "prompt": "proud restaurant owner standing at entrance of a beautiful newly opened restaurant, grand opening banner, warm golden evening lighting"
-  },
-  {
-    "seg": 24,
-    "prompt": "immaculate commercial kitchen with sparkling clean stainless steel counters and perfectly arranged equipment, bright professional lighting"
-  },
-  {
-    "seg": 25,
-    "prompt": "professional chef cooking with perfect technique in a well-organized kitchen, utensils neatly arranged, steam rising gracefully, warm light"
-  },
-  {
-    "seg": 26,
-    "prompt": "bustling happy restaurant with satisfied customers dining, sales graph overlay showing upward trend, success atmosphere, warm ambiance"
-  },
-  {
-    "seg": 27,
-    "prompt": "very popular crowded restaurant with queue extending outside the door, large expanded menu board visible, growth pains beginning"
-  },
-  {
-    "seg": 28,
-    "prompt": "enormous menu board covering entire wall with hundreds of item listings, overwhelming choices, chaotic but still functioning"
-  },
-  {
-    "seg": 29,
-    "prompt": "tall stack of unwashed pots and pans piled in a commercial kitchen sink, no time for cleaning, greasy cookware"
-  },
-  {
-    "seg": 30,
-    "prompt": "disorganized kitchen counter with raw ingredients placed too close to prepared dishes, messy food prep station, cluttered"
-  },
-  {
-    "seg": 31,
-    "prompt": "close-up of commercial kitchen tile floor with old dried oil stains, grimy and slippery surface, neglected maintenance"
-  },
-  {
-    "seg": 32,
-    "prompt": "busy chaotic kitchen with chef rushing between stations, impatient customers visible through service window, cutting corners under pressure"
-  },
-  {
-    "seg": 33,
-    "prompt": "conceptual visualization of heavy weight labeled Technical Debt pressing down on a computer server, financial burden on technology systems"
-  },
-  {
-    "seg": 34,
-    "prompt": "exhausted chef in kitchen surrounded by walls of menu items, clock showing hours passing by, slow inefficient service"
-  },
-  {
-    "seg": 35,
-    "prompt": "chef searching through towering mountain of cookware trying to find a clean pan, wasted time, kitchen inefficiency"
-  },
-  {
-    "seg": 36,
-    "prompt": "careful footsteps on a wet kitchen floor with visible oil puddles, caution wet floor sign, slippery surface hazard"
-  },
-  {
-    "seg": 37,
-    "prompt": "neglected server room with tangled cables everywhere, dusty unmaintained equipment, software decay visualization, dim amber lighting"
-  },
-  {
-    "seg": 38,
-    "prompt": "elegant restaurant facade on the left half versus cluttered messy kitchen storage room on the right half, dramatic contrast split"
-  },
-  {
-    "seg": 39,
-    "prompt": "large glowing number three with three branching paths extending outward, root cause analysis diagram, dark background with neon elements"
-  },
-  {
-    "seg": 40,
-    "prompt": "person looking through magnifying glass that only focuses nearby while background is completely blurred, short-term vision metaphor"
-  },
-  {
-    "seg": 41,
-    "prompt": "corporate boardroom meeting with executives studying quarterly revenue charts on screen, ignoring maintenance backlog on side monitor"
-  },
-  {
-    "seg": 42,
-    "prompt": "analytics dashboard showing all green short-term KPIs but a small system health indicator in corner showing amber warning"
-  },
-  {
-    "seg": 43,
-    "prompt": "conceptual split image of rigid concrete structure on left versus flexible growing organic tree on right, building vs living system"
-  },
-  {
-    "seg": 44,
-    "prompt": "well-maintained garden with neat rows on left transitioning to overgrown neglected garden on right, software as garden metaphor"
-  },
-  {
-    "seg": 45,
-    "prompt": "gardener carefully tending to a garden, pulling weeds between rows of code-like plants, refactoring as gardening, peaceful productive scene"
-  },
-  {
-    "seg": 46,
-    "prompt": "once-beautiful garden now completely overtaken by dense wild overgrowth, paths hidden under vegetation, abandoned and chaotic, moody green"
-  },
-  {
-    "seg": 47,
-    "prompt": "office hallway with employees walking out carrying personal boxes, knowledge leaving the organization, empty desks behind them, somber"
-  },
-  {
-    "seg": 48,
-    "prompt": "desk covered in sticky notes saying unknown code and do not touch, empty chair of departed developer, legacy mystery codebase"
-  },
-  {
-    "seg": 49,
-    "prompt": "circuit board with multiple layers of tape patches and improvised wire fixes stacked on top of each other, makeshift repairs"
-  },
-  {
-    "seg": 50,
-    "prompt": "geological cross-section showing layers of sediment representing old code stacked over decades, archaeological layers of legacy software"
-  },
-  {
-    "seg": 51,
-    "prompt": "house with multiple mismatched additions built on top of each other, unstable structure, foundation visibly strained, precarious architecture"
-  },
-  {
-    "seg": 52,
-    "prompt": "iconic Nokia 3310 mobile phone from early 2000s on a display pedestal, Nokia corporate headquarters in background, golden era of mobile"
-  },
-  {
-    "seg": 53,
-    "prompt": "old Nokia phone sitting next to a modern touchscreen smartphone, technology evolution contrast, old versus new side by side"
-  },
-  {
-    "seg": 54,
-    "prompt": "Symbian operating system interface on a Nokia phone screen with complex messy source code visible underneath, hidden complexity"
-  },
-  {
-    "seg": 55,
-    "prompt": "impossibly tangled ball of cables and wires filling an entire room, changing one wire requires touching hundreds, overwhelming complexity"
-  },
-  {
-    "seg": 56,
-    "prompt": "clean modern iOS and Android phone interfaces floating above modular code architecture blocks, flexible design evolution, bright tech aesthetic"
-  },
-  {
-    "seg": 57,
-    "prompt": "historic corporate memo document titled API Mandate on a desk, architecture whiteboard showing microservices diagram, 2002 tech office"
-  },
-  {
-    "seg": 58,
-    "prompt": "software engineering team in meeting room with conflicted expressions, pausing feature development to rebuild infrastructure, 2002 office setting"
-  },
-  {
-    "seg": 59,
-    "prompt": "Amazon Web Services cloud infrastructure visualization growing enormously, AWS logo glowing, data centers expanding globally, golden success story"
-  },
-  {
-    "seg": 60,
-    "prompt": "controlled demolition of an old building with new architectural plans visible in foreground, big bang rewrite approach concept"
-  },
-  {
-    "seg": 61,
-    "prompt": "abandoned unfinished construction site with 90 percent failure statistic overlay, stalled rewrite project, missed deadlines calendar on wall"
-  },
-  {
-    "seg": 62,
-    "prompt": "strangler fig tree peacefully growing around and enveloping an old tree trunk in tropical forest, natural gradual transformation, lush green"
-  },
-  {
-    "seg": 63,
-    "prompt": "diagram showing new clean blue code modules gradually wrapping around old gray legacy code blocks, strangler pattern visualization"
-  },
-  {
-    "seg": 64,
-    "prompt": "old gray code structure fading away as new clean blue architecture stands complete and strong, transformation finished, bright hopeful"
-  },
-  {
-    "seg": 65,
-    "prompt": "timeline showing codebase quality improving step by step, gradient from dark messy to bright clean, continuous improvement arrow"
-  },
-  {
-    "seg": 66,
-    "prompt": "hands carefully placing clean code building blocks one at a time into a growing structure, incremental assembly, warm workshop lighting"
-  },
-  {
-    "seg": 67,
-    "prompt": "developer tidying up workspace while coding, organized desk, preventing accumulation, proactive maintenance habit, clean productive environment"
-  },
-  {
-    "seg": 68,
-    "prompt": "development team collaborating on code review session around monitors, caring for software quality together, modern bright office"
-  },
-  {
-    "seg": 69,
-    "prompt": "colorful pie chart showing 20 percent time allocation highlighted in bright cyan for code maintenance, weekly schedule board, smart planning"
-  },
-  {
-    "seg": 70,
-    "prompt": "calm organized server maintenance on left side versus chaotic emergency room with alarms on right side, prevention vs crisis comparison"
-  },
-  {
-    "seg": 71,
-    "prompt": "open book with programming code on left page and philosophical wisdom text on right page, knowledge beyond technology, warm golden light"
-  },
-  {
-    "seg": 72,
-    "prompt": "master craftsman carefully maintaining precision tools with dedication and integrity, Japanese workshop aesthetic, warm wood tones"
-  },
-  {
-    "seg": 73,
-    "prompt": "clear smooth road stretching toward bright horizon with blue sky, well-maintained path, real speed through clear foundations, optimistic"
-  },
-  {
-    "seg": 74,
-    "prompt": "supportive manager listening to developer team presenting refactoring proposal with whiteboard diagrams, respectful collaborative meeting"
-  },
-  {
-    "seg": 75,
-    "prompt": "dedicated developer in protective hardhat inspecting and reinforcing building foundation with tools, guardian of infrastructure, heroic angle"
-  },
-  {
-    "seg": 76,
-    "prompt": "elegant minimalist quote card on dark background with golden decorative border, important wisdom to remember, premium typography"
-  },
-  {
-    "seg": 77,
-    "prompt": "two identical looking products side by side, one with visible wear and patches, one pristine and well-maintained, quality contrast"
-  },
-  {
-    "seg": 78,
-    "prompt": "vast grand canyon landscape showing enormous gap between two cliff edges, massive difference visualization, awe-inspiring natural scale"
-  },
-  {
-    "seg": 79,
-    "prompt": "competitive running track with athletes, leader running with streamlined light equipment on clear lane, competitive advantage visualization"
-  },
-  {
-    "seg": 80,
-    "prompt": "agile athlete sprinting freely with lightweight gear, no baggage, clean clear path ahead, pure momentum, dynamic action shot"
-  },
-  {
-    "seg": 81,
-    "prompt": "person stepping forward into bright light leaving heavy weights behind on the ground, liberation from burden, triumphant sunrise"
-  },
-  {
-    "seg": 82,
-    "prompt": "cozy podcast studio at end of recording session, warm amber ambient lighting, microphone and headphones resting, peaceful conclusion"
-  },
-  {
-    "seg": 83,
-    "prompt": "magnifying glass hovering over an organization chart revealing hidden cracks and issues underneath, introspection and discovery moment"
-  },
-  {
-    "seg": 84,
-    "prompt": "contemplative person looking at their own reflection with a thoughtful expression, self-assessment moment, soft mirror lighting"
-  },
-  {
-    "seg": 85,
-    "prompt": "warm sunset colors behind podcast studio microphone silhouette, elegant thank you typography, closing credits aesthetic, gratitude"
-  }
+  {"seg": 0, "prompt": "A cinematic cover image of glowing digital circuit board patterns merging with a lush green garden, symbolizing the balance between technology and organic growth, dramatic volumetric lighting, no text, no words, no letters"},
+  {"seg": 1, "prompt": "A Thai male podcast host wearing headphones sitting in a cozy recording studio with warm lighting and a professional microphone, cinematic close-up shot"},
+  {"seg": 2, "prompt": "A dramatic wide shot of a modern tech office with Thai software developers working late at night, glowing monitors reflecting on their faces, cinematic moody lighting"},
+  {"seg": 3, "prompt": "A dramatic wide shot of a modern tech office with Thai software developers working late at night, glowing monitors reflecting on their faces, cinematic moody lighting"},
+  {"seg": 4, "prompt": "Close-up of a frustrated Thai programmer rubbing his forehead while staring at lines of messy code on multiple monitors, dramatic side lighting"},
+  {"seg": 5, "prompt": "A cinematic overhead shot of tangled cables and messy server room representing chaos in code, dramatic red and blue lighting"},
+  {"seg": 6, "prompt": "The word REFACTORING displayed in elegant glowing typography against a dark gradient background with subtle code particles floating around, cinematic title card style"},
+  {"seg": 7, "prompt": "The word REFACTORING displayed in elegant glowing typography against a dark gradient background with subtle code particles floating around, cinematic title card style"},
+  {"seg": 8, "prompt": "A nostalgic retro computer store in a Thai shopping mall from the early 2000s, shelves filled with boxed software, warm vintage color grading, cinematic wide shot"},
+  {"seg": 9, "prompt": "A nostalgic retro computer store in a Thai shopping mall from the early 2000s, shelves filled with boxed software, warm vintage color grading, cinematic wide shot"},
+  {"seg": 10, "prompt": "Close-up of hands putting a shrink-wrapped software CD into a retail box, vintage Thai IT mall background slightly blurred, warm nostalgic lighting"},
+  {"seg": 11, "prompt": "A Thai software engineer from the early 2000s looking stressed while reviewing a stack of printed code documents at a desk, CRT monitor glowing, cinematic warm tones"},
+  {"seg": 12, "prompt": "A Thai software engineer from the early 2000s looking stressed while reviewing a stack of printed code documents at a desk, CRT monitor glowing, cinematic warm tones"},
+  {"seg": 13, "prompt": "An architectural blueprint spread on a desk with a Thai engineer carefully drawing system diagrams, overhead cinematic shot with warm desk lamp lighting"},
+  {"seg": 14, "prompt": "A futuristic agile workspace with standing desks, colorful sticky notes on glass walls, Thai developers in a fast-paced standup meeting, dynamic cinematic angle"},
+  {"seg": 15, "prompt": "A futuristic agile workspace with standing desks, colorful sticky notes on glass walls, Thai developers in a fast-paced standup meeting, dynamic cinematic angle"},
+  {"seg": 16, "prompt": "Bold text MOVE FAST AND BREAK THINGS written on a whiteboard in a Silicon Valley style office, dramatic spotlight, cinematic shallow depth of field"},
+  {"seg": 17, "prompt": "A Thai developer sprinting through a corridor carrying a laptop, motion blur effect, urgent atmosphere, cinematic low angle shot with dramatic lighting"},
+  {"seg": 18, "prompt": "A Thai developer sprinting through a corridor carrying a laptop, motion blur effect, urgent atmosphere, cinematic low angle shot with dramatic lighting"},
+  {"seg": 19, "prompt": "A crumbling digital building made of code blocks falling apart in slow motion, dramatic dark sky background, cinematic wide shot with volumetric lighting"},
+  {"seg": 20, "prompt": "A crumbling digital building made of code blocks falling apart in slow motion, dramatic dark sky background, cinematic wide shot with volumetric lighting"},
+  {"seg": 21, "prompt": "A beautiful Thai restaurant exterior at golden hour with elegant signage and warm inviting glow from inside, cinematic establishing shot"},
+  {"seg": 22, "prompt": "A beautiful Thai restaurant exterior at golden hour with elegant signage and warm inviting glow from inside, cinematic establishing shot"},
+  {"seg": 23, "prompt": "A pristine professional Thai restaurant kitchen on opening day, gleaming stainless steel surfaces, neatly organized utensils, bright clean lighting, cinematic wide shot"},
+  {"seg": 24, "prompt": "A pristine professional Thai restaurant kitchen on opening day, gleaming stainless steel surfaces, neatly organized utensils, bright clean lighting, cinematic wide shot"},
+  {"seg": 25, "prompt": "A skilled Thai chef in white uniform cooking with flames rising from a wok, happy customers visible through the service window, warm cinematic lighting"},
+  {"seg": 26, "prompt": "A skilled Thai chef in white uniform cooking with flames rising from a wok, happy customers visible through the service window, warm cinematic lighting"},
+  {"seg": 27, "prompt": "A packed Thai restaurant with happy customers dining, a graph overlay showing sales going up, warm golden atmosphere, cinematic medium shot"},
+  {"seg": 28, "prompt": "A packed Thai restaurant with happy customers dining, a graph overlay showing sales going up, warm golden atmosphere, cinematic medium shot"},
+  {"seg": 29, "prompt": "An overwhelming menu board in a Thai restaurant with hundreds of items, a confused Thai chef looking at it, slightly chaotic kitchen background, cinematic shot"},
+  {"seg": 30, "prompt": "An overwhelming menu board in a Thai restaurant with hundreds of items, a confused Thai chef looking at it, slightly chaotic kitchen background, cinematic shot"},
+  {"seg": 31, "prompt": "A messy Thai restaurant kitchen with dirty pans stacked up, grease stains on surfaces, raw ingredients mixed with cooked food, dim harsh lighting, cinematic gritty style"},
+  {"seg": 32, "prompt": "A messy Thai restaurant kitchen with dirty pans stacked up, grease stains on surfaces, raw ingredients mixed with cooked food, dim harsh lighting, cinematic gritty style"},
+  {"seg": 33, "prompt": "A Thai restaurant owner dismissively waving his hand while looking at the messy kitchen, customers waiting in the background, cinematic medium shot with tense lighting"},
+  {"seg": 34, "prompt": "A Thai restaurant owner dismissively waving his hand while looking at the messy kitchen, customers waiting in the background, cinematic medium shot with tense lighting"},
+  {"seg": 35, "prompt": "Split screen showing a beautiful restaurant frontend on one side and messy code on a computer screen on the other, the word TECHNICAL DEBT glowing between them, cinematic"},
+  {"seg": 36, "prompt": "Split screen showing a beautiful restaurant frontend on one side and messy code on a computer screen on the other, the word TECHNICAL DEBT glowing between them, cinematic"},
+  {"seg": 37, "prompt": "An exhausted Thai chef standing in an extremely cluttered kitchen, hundreds of order tickets hanging, overwhelmed expression, dramatic overhead lighting, cinematic"},
+  {"seg": 38, "prompt": "An exhausted Thai chef standing in an extremely cluttered kitchen, hundreds of order tickets hanging, overwhelmed expression, dramatic overhead lighting, cinematic"},
+  {"seg": 39, "prompt": "Close-up of a Thai chef searching through piles of dirty pans trying to find a clean one, sweat on forehead, dramatic close-up with harsh kitchen lighting"},
+  {"seg": 40, "prompt": "Close-up of a Thai chef searching through piles of dirty pans trying to find a clean one, sweat on forehead, dramatic close-up with harsh kitchen lighting"},
+  {"seg": 41, "prompt": "A comparison shot of a clean organized code editor on one side gradually transitioning to an extremely messy tangled code on the other side, cinematic digital art"},
+  {"seg": 42, "prompt": "A comparison shot of a clean organized code editor on one side gradually transitioning to an extremely messy tangled code on the other side, cinematic digital art"},
+  {"seg": 43, "prompt": "A beautiful polished software interface on a laptop screen in the foreground, with a chaotic mess of tangled wires and servers visible behind it, cinematic shallow depth of field"},
+  {"seg": 44, "prompt": "A beautiful polished software interface on a laptop screen in the foreground, with a chaotic mess of tangled wires and servers visible behind it, cinematic shallow depth of field"},
+  {"seg": 45, "prompt": "The number 3 displayed prominently with three illuminated key icons floating around it, dark dramatic background, cinematic infographic style"},
+  {"seg": 46, "prompt": "The number 3 displayed prominently with three illuminated key icons floating around it, dark dramatic background, cinematic infographic style"},
+  {"seg": 47, "prompt": "A Thai executive in a boardroom pointing at a chart showing only short-term profits, ignoring a warning sign about technical issues, dramatic corporate lighting"},
+  {"seg": 48, "prompt": "Thai business executives in suits sitting around a conference table looking at a presentation showing Feature A with dollar signs, modern office, cinematic wide shot"},
+  {"seg": 49, "prompt": "Thai business executives in suits sitting around a conference table looking at a presentation showing Feature A with dollar signs, modern office, cinematic wide shot"},
+  {"seg": 50, "prompt": "A transparent overlay showing invisible infrastructure problems beneath a shiny feature dashboard, Thai developers looking concerned in background, cinematic"},
+  {"seg": 51, "prompt": "A transparent overlay showing invisible infrastructure problems beneath a shiny feature dashboard, Thai developers looking concerned in background, cinematic"},
+  {"seg": 52, "prompt": "A luxurious sofa in a beautiful Thai living room with water dripping from a leaking pipe in the ceiling above it, dramatic ironic composition, cinematic lighting"},
+  {"seg": 53, "prompt": "A luxurious sofa in a beautiful Thai living room with water dripping from a leaking pipe in the ceiling above it, dramatic ironic composition, cinematic lighting"},
+  {"seg": 54, "prompt": "A luxurious sofa in a beautiful Thai living room with water dripping from a leaking pipe in the ceiling above it, dramatic ironic composition, cinematic lighting"},
+  {"seg": 55, "prompt": "A ruined wet sofa in a flooded Thai living room with water damage everywhere, dramatic wide shot showing the consequences, moody cinematic lighting"},
+  {"seg": 56, "prompt": "A ruined wet sofa in a flooded Thai living room with water damage everywhere, dramatic wide shot showing the consequences, moody cinematic lighting"},
+  {"seg": 57, "prompt": "A concrete skyscraper on one side contrasted with a lush digital garden on the other, the words HARDWARE vs SOFTWARE floating between them, cinematic split composition"},
+  {"seg": 58, "prompt": "A concrete skyscraper on one side contrasted with a lush digital garden on the other, the words HARDWARE vs SOFTWARE floating between them, cinematic split composition"},
+  {"seg": 59, "prompt": "A massive concrete building standing unchanged for decades, weathered but solid, grey overcast sky, cinematic architectural photography style"},
+  {"seg": 60, "prompt": "A massive concrete building standing unchanged for decades, weathered but solid, grey overcast sky, cinematic architectural photography style"},
+  {"seg": 61, "prompt": "A beautiful well-tended Thai garden with a Thai gardener pruning plants, neat rows of flowers and vegetables, warm sunlight, cinematic wide shot"},
+  {"seg": 62, "prompt": "A beautiful well-tended Thai garden with a Thai gardener pruning plants, neat rows of flowers and vegetables, warm sunlight, cinematic wide shot"},
+  {"seg": 63, "prompt": "A Thai gardener pulling weeds from a garden bed, representing code refactoring, warm golden hour lighting, cinematic close-up of hands working in soil"},
+  {"seg": 64, "prompt": "A Thai gardener pulling weeds from a garden bed, representing code refactoring, warm golden hour lighting, cinematic close-up of hands working in soil"},
+  {"seg": 65, "prompt": "A Thai gardener pulling weeds from a garden bed, representing code refactoring, warm golden hour lighting, cinematic close-up of hands working in soil"},
+  {"seg": 66, "prompt": "An empty office desk with a resignation letter and a coffee mug left behind, a Thai developer walking away in the blurred background, melancholic cinematic lighting"},
+  {"seg": 67, "prompt": "An empty office desk with a resignation letter and a coffee mug left behind, a Thai developer walking away in the blurred background, melancholic cinematic lighting"},
+  {"seg": 68, "prompt": "A confused young Thai developer staring at an incomprehensible legacy codebase on multiple monitors, dark office with only screen light, cinematic"},
+  {"seg": 69, "prompt": "A confused young Thai developer staring at an incomprehensible legacy codebase on multiple monitors, dark office with only screen light, cinematic"},
+  {"seg": 70, "prompt": "A visual metaphor of a Thai house with multiple unstable additions stacked on top of each other, leaning and cracking, dramatic low angle, cinematic wide shot"},
+  {"seg": 71, "prompt": "A visual metaphor of a Thai house with multiple unstable additions stacked on top of each other, leaning and cracking, dramatic low angle, cinematic wide shot"},
+  {"seg": 72, "prompt": "A visual metaphor of a Thai house with multiple unstable additions stacked on top of each other, leaning and cracking, dramatic low angle, cinematic wide shot"},
+  {"seg": 73, "prompt": "A dramatic shot of a vintage Nokia phone next to a modern smartphone, the Nokia fading and cracking, dark moody background, cinematic product photography"},
+  {"seg": 74, "prompt": "A tangled mess of circuit board traces and code representing Symbian OS complexity, dark technical aesthetic, cinematic macro photography style"},
+  {"seg": 75, "prompt": "A tangled mess of circuit board traces and code representing Symbian OS complexity, dark technical aesthetic, cinematic macro photography style"},
+  {"seg": 76, "prompt": "Extremely tangled colorful wires and cables forming an impossible knot, representing code complexity, dramatic studio lighting, cinematic close-up"},
+  {"seg": 77, "prompt": "Extremely tangled colorful wires and cables forming an impossible knot, representing code complexity, dramatic studio lighting, cinematic close-up"},
+  {"seg": 78, "prompt": "A clean minimalist smartphone interface design on a white desk next to architectural blueprints showing flexible modular design, bright modern cinematic lighting"},
+  {"seg": 79, "prompt": "A clean minimalist smartphone interface design on a white desk next to architectural blueprints showing flexible modular design, bright modern cinematic lighting"},
+  {"seg": 80, "prompt": "A race track with one runner stuck in mud while another runs freely on a clean path, metaphor for technical debt slowing you down, cinematic aerial shot"},
+  {"seg": 81, "prompt": "A race track with one runner stuck in mud while another runs freely on a clean path, metaphor for technical debt slowing you down, cinematic aerial shot"},
+  {"seg": 82, "prompt": "The Amazon logo glowing against a dark background with a timeline showing the year 2002, dramatic corporate cinematic style with blue and orange tones"},
+  {"seg": 83, "prompt": "The Amazon logo glowing against a dark background with a timeline showing the year 2002, dramatic corporate cinematic style with blue and orange tones"},
+  {"seg": 84, "prompt": "The Amazon logo glowing against a dark background with a timeline showing the year 2002, dramatic corporate cinematic style with blue and orange tones"},
+  {"seg": 85, "prompt": "A dramatic visualization of interconnected API nodes and service interfaces forming a network, glowing blue connections on dark background, cinematic digital art"},
+  {"seg": 86, "prompt": "A dramatic visualization of interconnected API nodes and service interfaces forming a network, glowing blue connections on dark background, cinematic digital art"},
+  {"seg": 87, "prompt": "A stern executive silhouette pointing at a whiteboard with API architecture diagrams, dramatic boardroom lighting, cinematic low angle shot"},
+  {"seg": 88, "prompt": "A stern executive silhouette pointing at a whiteboard with API architecture diagrams, dramatic boardroom lighting, cinematic low angle shot"},
+  {"seg": 89, "prompt": "A stern executive silhouette pointing at a whiteboard with API architecture diagrams, dramatic boardroom lighting, cinematic low angle shot"},
+  {"seg": 90, "prompt": "A triumphant wide shot of massive data center servers stretching into the distance, glowing blue lights, cinematic sci-fi aesthetic"},
+  {"seg": 91, "prompt": "A triumphant wide shot of massive data center servers stretching into the distance, glowing blue lights, cinematic sci-fi aesthetic"},
+  {"seg": 92, "prompt": "A triumphant wide shot of massive data center servers stretching into the distance, glowing blue lights, cinematic sci-fi aesthetic"},
+  {"seg": 93, "prompt": "A cloud computing logo formed by glowing server nodes, massive scale visualization, orange and blue cinematic color palette, dramatic wide shot"},
+  {"seg": 94, "prompt": "A cloud computing logo formed by glowing server nodes, massive scale visualization, orange and blue cinematic color palette, dramatic wide shot"},
+  {"seg": 95, "prompt": "A Thai business person standing at a crossroads with two paths, one leading to a wrecking ball and one with growing vines, dramatic sunset lighting, cinematic"},
+  {"seg": 96, "prompt": "A Thai business person standing at a crossroads with two paths, one leading to a wrecking ball and one with growing vines, dramatic sunset lighting, cinematic"},
+  {"seg": 97, "prompt": "A dramatic scene of a building being demolished with a wrecking ball and rubble flying, a red warning sign showing 90 percent failure rate, cinematic action shot"},
+  {"seg": 98, "prompt": "A dramatic scene of a building being demolished with a wrecking ball and rubble flying, a red warning sign showing 90 percent failure rate, cinematic action shot"},
+  {"seg": 99, "prompt": "A dramatic scene of a building being demolished with a wrecking ball and rubble flying, a red warning sign showing 90 percent failure rate, cinematic action shot"},
+  {"seg": 100, "prompt": "An hourglass running out with competitors racing ahead in the background, sense of urgency, dramatic cinematic lighting with warm and cool contrast"},
+  {"seg": 101, "prompt": "An hourglass running out with competitors racing ahead in the background, sense of urgency, dramatic cinematic lighting with warm and cool contrast"},
+  {"seg": 102, "prompt": "A strangler fig tree gracefully growing around and enveloping an old tree trunk in a tropical forest, beautiful natural light filtering through leaves, cinematic nature shot"},
+  {"seg": 103, "prompt": "A strangler fig tree gracefully growing around and enveloping an old tree trunk in a tropical forest, beautiful natural light filtering through leaves, cinematic nature shot"},
+  {"seg": 104, "prompt": "A strangler fig tree gracefully growing around and enveloping an old tree trunk in a tropical forest, beautiful natural light filtering through leaves, cinematic nature shot"},
+  {"seg": 105, "prompt": "A digital visualization of new clean code modules gradually replacing old tangled code, smooth transition animation style, blue to green color shift, cinematic"},
+  {"seg": 106, "prompt": "A digital visualization of new clean code modules gradually replacing old tangled code, smooth transition animation style, blue to green color shift, cinematic"},
+  {"seg": 107, "prompt": "A clean new digital structure standing tall while remnants of old code dissolve away like particles, hopeful bright lighting, cinematic wide shot"},
+  {"seg": 108, "prompt": "A clean new digital structure standing tall while remnants of old code dissolve away like particles, hopeful bright lighting, cinematic wide shot"},
+  {"seg": 109, "prompt": "A Thai developer team high-fiving around a clean whiteboard with the word MAINTAINABILITY written large, bright modern office, cinematic group shot"},
+  {"seg": 110, "prompt": "A Thai developer team high-fiving around a clean whiteboard with the word MAINTAINABILITY written large, bright modern office, cinematic group shot"},
+  {"seg": 111, "prompt": "A Thai developer team high-fiving around a clean whiteboard with the word MAINTAINABILITY written large, bright modern office, cinematic group shot"},
+  {"seg": 112, "prompt": "A calendar showing 20 percent of the week highlighted for cleanup work, Thai developers happily organizing code on screens, warm productive office atmosphere, cinematic"},
+  {"seg": 113, "prompt": "A calendar showing 20 percent of the week highlighted for cleanup work, Thai developers happily organizing code on screens, warm productive office atmosphere, cinematic"},
+  {"seg": 114, "prompt": "A split image showing a small cost of regular maintenance versus a huge expensive system crash with consultants rushing in, dramatic contrast lighting, cinematic"},
+  {"seg": 115, "prompt": "A split image showing a small cost of regular maintenance versus a huge expensive system crash with consultants rushing in, dramatic contrast lighting, cinematic"},
+  {"seg": 116, "prompt": "A Thai person carefully smoothing and preparing a running track surface at dawn, metaphor for discipline and preparation, beautiful golden hour cinematic lighting"},
+  {"seg": 117, "prompt": "A Thai person carefully smoothing and preparing a running track surface at dawn, metaphor for discipline and preparation, beautiful golden hour cinematic lighting"},
+  {"seg": 118, "prompt": "A Thai runner on a perfectly smooth track at sunrise, confident and ready, metaphor for prepared foundation enabling speed, cinematic wide shot with lens flare"},
+  {"seg": 119, "prompt": "A Thai runner on a perfectly smooth track at sunrise, confident and ready, metaphor for prepared foundation enabling speed, cinematic wide shot with lens flare"},
+  {"seg": 120, "prompt": "A Thai developer as a heroic figure in dramatic lighting, holding a glowing wrench symbolizing refactoring tools, protecting a building foundation, cinematic portrait"},
+  {"seg": 121, "prompt": "A Thai developer as a heroic figure in dramatic lighting, holding a glowing wrench symbolizing refactoring tools, protecting a building foundation, cinematic portrait"},
+  {"seg": 122, "prompt": "Two contrasting objects side by side, a fragile cracked vase barely holding water and a beautifully crafted solid vessel, dramatic studio lighting, cinematic still life"},
+  {"seg": 123, "prompt": "Two contrasting objects side by side, a fragile cracked vase barely holding water and a beautifully crafted solid vessel, dramatic studio lighting, cinematic still life"},
+  {"seg": 124, "prompt": "A Thai winner crossing a finish line on a clean track while others are tangled in obstacles behind, triumphant cinematic wide shot with dramatic lighting"},
+  {"seg": 125, "prompt": "A Thai winner crossing a finish line on a clean track while others are tangled in obstacles behind, triumphant cinematic wide shot with dramatic lighting"},
+  {"seg": 126, "prompt": "A cinematic wide shot of a Thai person looking at their reflection in a clean mirror, contemplating self-improvement, warm golden hour lighting through a window"},
+  {"seg": 127, "prompt": "A Thai podcast host smiling warmly at the camera with a thank you gesture, cozy studio with warm ambient lighting, microphone in foreground, cinematic close-up"},
+  {"seg": 128, "prompt": "A Thai podcast host smiling warmly at the camera with a thank you gesture, cozy studio with warm ambient lighting, microphone in foreground, cinematic close-up"}
 ]

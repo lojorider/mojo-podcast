@@ -21,6 +21,8 @@ import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
+import shutil
+
 import requests
 
 # ---------------------------------------------------------------------------
@@ -275,27 +277,64 @@ def generate_images(
     resolution: tuple[int, int],
     style: str | None,
 ) -> list[str]:
-    """Generate images สำหรับทุก segment แบบ parallel."""
+    """Generate images สำหรับทุก segment แบบ parallel.
+
+    ถ้า segments ติดกันมี prompt เดียวกัน จะ reuse รูปเดิม (ไม่ gen ใหม่)
+    เพื่อให้รูปแสดงนานขึ้น (group segments สั้นๆ เข้าด้วยกัน)
+    """
     images_dir = os.path.join(output_dir, "images")
     os.makedirs(images_dir, exist_ok=True)
 
-    paths = [None] * len(segments)
-    print(f"  🎨 กำลังสร้างรูป {len(segments)} รูป (workers={IMAGE_WORKERS})...")
+    # Build effective prompts and detect groups (consecutive same-prompt segments)
+    effective_prompts = []
+    for i, seg in enumerate(segments):
+        p = prompts[i] if prompts[i] else f"cinematic scene: {seg['text']}"
+        effective_prompts.append(p)
 
+    # Find which segments need generation vs reuse
+    # A segment reuses the previous image if it has the exact same prompt
+    generate_indices = []  # segments that need actual generation
+    reuse_map = {}  # seg_idx -> source_seg_idx (copy from)
+    for i, p in enumerate(effective_prompts):
+        if i > 0 and effective_prompts[i] == effective_prompts[i - 1]:
+            # Find the first segment in this group
+            src = i - 1
+            while src in reuse_map:
+                src = reuse_map[src]
+            reuse_map[i] = src
+        else:
+            generate_indices.append(i)
+
+    unique_count = len(generate_indices)
+    reuse_count = len(reuse_map)
+    print(f"  🎨 กำลังสร้างรูป {unique_count} รูป (reuse {reuse_count} จาก groups, workers={IMAGE_WORKERS})...")
+
+    paths = [None] * len(segments)
+
+    # Generate unique images in parallel
     with ThreadPoolExecutor(max_workers=IMAGE_WORKERS) as pool:
         futures = {}
-        for i, seg in enumerate(segments):
-            prompt = prompts[i] if prompts[i] else f"cinematic scene: {seg['text']}"
-            future = pool.submit(generate_single_image, i, prompt, images_dir, resolution, style)
+        for i in generate_indices:
+            future = pool.submit(
+                generate_single_image, i, effective_prompts[i], images_dir, resolution, style
+            )
             futures[future] = i
 
         for future in as_completed(futures):
             idx = futures[future]
             paths[idx] = future.result()
             done = sum(1 for p in paths if p is not None)
-            print(f"    [{done}/{len(segments)}] seg_{idx:04d}.png ✓")
+            print(f"    [{done}/{unique_count}] seg_{idx:04d}.png ✓")
 
-    print(f"  ✅ สร้างรูปครบ {len(paths)} รูป")
+    # Copy images for reused segments
+    for dst_idx, src_idx in reuse_map.items():
+        src_path = paths[src_idx]
+        dst_path = os.path.join(images_dir, f"seg_{dst_idx:04d}.png")
+        if not os.path.exists(dst_path):
+            shutil.copy2(src_path, dst_path)
+        paths[dst_idx] = dst_path
+
+    print(f"  ✅ สร้างรูปครบ {len(paths)} รูป ({unique_count} unique + {reuse_count} reused)")
     return paths
 
 

@@ -32,6 +32,11 @@ python auto_content.py <audio_file>
    - ปลอดภัยจาก NSFW filter (หลีกเลี่ยงคำว่า zombie, horror, burning, destruction, chains)
    - cinematic style เหมาะทำ video
 
+**กฎสำคัญในการสร้าง prompts:**
+   - **รูปแรก (seg 0) ต้องเป็นรูปปก** — ภาพสวยสื่อหัวข้อ episode, ห้ามมีตัวหนังสือ
+   - **ตัวละครคนต้องเป็นคนไทย** — ระบุ "Thai" ใน prompt เสมอเมื่อมีคน
+   - **แต่ละรูปต้องแสดงอย่างน้อย 4 วินาที** — group segments สั้นๆ ที่ติดกันให้ใช้ prompt เดียวกัน (consecutive segments ที่มี prompt เดียวกันจะ reuse รูปเดียวกันโดยอัตโนมัติ)
+
 Format:
 ```json
 [
@@ -76,6 +81,7 @@ python auto_content.py <audio> --no-auto-server          # ไม่ auto-start 
 - **colorkey ลบพื้นดำ waveform**: overlay เฉพาะเส้น waveform ลงบน gradient ดำจาง
 - **prompts.json แยกจาก script**: แก้ไข prompt ได้โดยไม่ต้องแก้ code
 - **text2img auto-start/stop**: script จัดการ server lifecycle เอง ไม่ต้องเปิดเอง
+- **image reuse สำหรับ group segments**: consecutive segments ที่มี prompt เดียวกันจะ copy รูปแทนการ gen ใหม่ ช่วยให้แต่ละรูปแสดงนานขึ้น (≥4 วินาที)
 
 ## File Structure
 ```

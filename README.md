@@ -53,11 +53,11 @@ Audio File (.wav)
 ## Setup
 
 ```bash
-# dependencies
+# Python dependencies
 pip install faster-whisper requests Pillow
 
-# text2img API server (ต้องเปิดทิ้งไว้)
-cd ../text2img && npm start
+# text2img API server (bundled — auto-start/stop โดย script)
+cd text2img && npm install
 ```
 
 ## Usage
@@ -94,6 +94,7 @@ python auto_content.py audio.wav --skip-transcribe --skip-images
 | `--style "cyberpunk"` | เพิ่ม style ให้รูป |
 | `--prompts file.json` | ใช้ prompts file อื่น |
 | `--output-dir ./out` | เปลี่ยน output directory |
+| `--no-auto-server` | ไม่ auto-start text2img server |
 
 ## Output Files
 
@@ -124,6 +125,9 @@ output/
 - บรรยายภาพที่สื่อบริบทเนื้อหา (ไม่ใช่แปลตรงตัว)
 - หลีกเลี่ยงคำ NSFW: zombie, horror, burning, destruction, chains, violence
 - เน้น cinematic, descriptive, visual
+- **รูปแรก (seg 0) ต้องเป็นรูปปก** — ภาพสวยสื่อหัวข้อ episode, ห้ามมีตัวหนังสือ
+- **ตัวละครคนต้องเป็นคนไทย** — ระบุ "Thai" ใน prompt เสมอเมื่อมีคน
+- **แต่ละรูปต้องแสดงอย่างน้อย 4 วินาที** — group segments สั้นๆ ที่ติดกันให้ใช้ prompt เดียวกัน
 
 ## Tech Stack
 - **Transcription**: faster-whisper (CTranslate2, large-v3-turbo)
