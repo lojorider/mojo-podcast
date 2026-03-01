@@ -1,2 +1,8 @@
 output/
 sound/
+.DS_Store
+
+# text2img
+text2img/node_modules/
+text2img/.env.local
+text2img/.pid

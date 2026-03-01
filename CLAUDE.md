@@ -8,12 +8,11 @@
 เมื่อ user ให้ไฟล์เสียง (เช่น `my_audio.wav`) ให้ทำตาม flow นี้:
 
 ### Step 0: Prerequisites
-- ต้องมี text2img API server ทำงานที่ `localhost:3210`
-  ```bash
-  cd ../text2img && npm start
-  ```
+- text2img server จะ auto-start/stop โดย `auto_content.py` (อยู่ใน `text2img/` subdirectory)
+  - ถ้าต้องการเปิด server เอง: `cd text2img && npm start` แล้วใช้ `--no-auto-server`
 - ต้องติดตั้ง: `pip install faster-whisper requests Pillow`
 - ต้องมี FFmpeg
+- ต้องมี Node.js (สำหรับ text2img server)
 
 ### Step 1: Transcribe Audio
 ```bash
@@ -67,6 +66,7 @@ python auto_content.py <audio> --viz spectrum           # ใช้ spectrum แ
 python auto_content.py <audio> --resolution 1920x1080  # เปลี่ยน resolution
 python auto_content.py <audio> --style "watercolor"    # เพิ่ม style ให้รูป
 python auto_content.py <audio> --prompts my_prompts.json  # ใช้ prompts file อื่น
+python auto_content.py <audio> --no-auto-server          # ไม่ auto-start server
 ```
 
 ## Architecture Decisions
@@ -75,14 +75,19 @@ python auto_content.py <audio> --prompts my_prompts.json  # ใช้ prompts fi
 - **รูปสร้าง 120% ขนาด**: เผื่อ margin สำหรับ Ken Burns pan
 - **colorkey ลบพื้นดำ waveform**: overlay เฉพาะเส้น waveform ลงบน gradient ดำจาง
 - **prompts.json แยกจาก script**: แก้ไข prompt ได้โดยไม่ต้องแก้ code
+- **text2img auto-start/stop**: script จัดการ server lifecycle เอง ไม่ต้องเปิดเอง
 
 ## File Structure
 ```
-auto-content/
+mojo-podcast/
 ├── CLAUDE.md          # คำสั่งสำหรับ AI (ไฟล์นี้)
-├── auto_content.py    # main script
+├── auto_content.py    # main script (auto-start/stop text2img server)
 ├── prompts.json       # AI-generated image prompts (ต่อ audio file)
-├── <audio>.wav        # input audio
+├── sound/             # input audio files
+├── text2img/          # text2img API server (subdirectory)
+│   ├── src/server.js  # Express server (port 3210)
+│   ├── package.json
+│   └── .env.local     # API keys (gitignored)
 └── output/
     ├── segments.json  # transcription cache
     ├── images/        # generated images (seg_0000.png, ...)
@@ -93,5 +98,5 @@ auto-content/
 
 ## Dependencies
 - Python: `faster-whisper`, `requests`, `Pillow`
-- System: `ffmpeg` (8.0+)
-- Service: text2img API at `localhost:3210` (from `../text2img`)
+- System: `ffmpeg` (8.0+), Node.js
+- Service: text2img API (bundled ใน `text2img/`, auto-managed)

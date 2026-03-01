@@ -1,0 +1,257 @@
+{
+  "info": {
+    "name": "Text2Img API",
+    "description": "AI image generation API using Cloudflare Workers AI (FLUX-1-Schnell)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3210",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/health",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "health"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Generate Image (Base64)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"prompt\": \"Thai restaurant interior, modern design\",\n  \"size\": \"1024x1024\",\n  \"steps\": 4,\n  \"guidance\": 7.5,\n  \"quality\": 85,\n  \"outputFormat\": \"png\",\n  \"enhancePrompt\": true\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/generate?format=base64",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "generate"],
+          "query": [
+            {
+              "key": "format",
+              "value": "base64"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Generate Image (Binary)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"prompt\": \"Appetizing Thai green curry dish\",\n  \"size\": \"512x512\",\n  \"outputFormat\": \"jpg\",\n  \"quality\": 90,\n  \"style\": \"food\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/generate?format=binary",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "generate"],
+          "query": [
+            {
+              "key": "format",
+              "value": "binary"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Generate with Responsive Variants",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"prompt\": \"Modern restaurant hero banner\",\n  \"size\": \"1920x1080\",\n  \"outputFormat\": \"webp\",\n  \"responsive\": true,\n  \"responsiveSizes\": [480, 768, 1024, 1920],\n  \"style\": \"hero\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/generate?format=base64",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "generate"],
+          "query": [
+            {
+              "key": "format",
+              "value": "base64"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Generate Icon (Small, Optimized)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"prompt\": \"Food menu category icon, Thai cuisine\",\n  \"size\": \"512x512\",\n  \"outputFormat\": \"png\",\n  \"optimize\": true,\n  \"resize\": \"128x128\",\n  \"style\": \"icon\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/generate?format=base64",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "generate"],
+          "query": [
+            {
+              "key": "format",
+              "value": "base64"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Icon: App Icon Set",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"prompt\": \"modern restaurant logo with fork and flame\",\n  \"preset\": \"appIcon\",\n  \"cornerRadius\": 0.22,\n  \"padding\": 0.1\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/generate/icon",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "generate", "icon"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Icon: Menu Bar",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"prompt\": \"a bell notification icon\",\n  \"preset\": \"menuBar\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/generate/icon",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "generate", "icon"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Icon: Favicon / Web Icons",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"prompt\": \"a star logo, bright yellow\",\n  \"preset\": \"favicon\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/generate/icon",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "generate", "icon"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Icon: All Presets",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"prompt\": \"a fork and knife logo\",\n  \"preset\": \"all\",\n  \"background\": \"transparent\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/generate/icon",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "generate", "icon"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Icon: All Presets (ZIP Download)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"prompt\": \"a fork and knife logo\",\n  \"preset\": \"all\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/generate/icon?format=zip",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "generate", "icon"],
+          "query": [
+            {
+              "key": "format",
+              "value": "zip"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

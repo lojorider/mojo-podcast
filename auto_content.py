@@ -10,9 +10,11 @@ Pipeline:
 """
 
 import argparse
+import atexit
 import base64
 import json
 import os
+import signal
 import subprocess
 import sys
 import time
@@ -24,10 +26,96 @@ import requests
 # ---------------------------------------------------------------------------
 # Constants
 # ---------------------------------------------------------------------------
-TEXT2IMG_URL = "http://localhost:3210/api/generate"
+TEXT2IMG_PORT = 3210
+TEXT2IMG_URL = f"http://localhost:{TEXT2IMG_PORT}/api/generate"
+TEXT2IMG_HEALTH_URL = f"http://localhost:{TEXT2IMG_PORT}/api/health"
+TEXT2IMG_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "text2img")
 DEFAULT_RESOLUTION = (1280, 720)
 MAX_RETRIES = 3
 IMAGE_WORKERS = 3
+
+# Global ref to server process for cleanup
+_server_process = None
+
+
+# ---------------------------------------------------------------------------
+# text2img Server Lifecycle
+# ---------------------------------------------------------------------------
+def is_server_running() -> bool:
+    """Check if text2img server is responding."""
+    try:
+        resp = requests.get(TEXT2IMG_HEALTH_URL, timeout=3)
+        return resp.status_code == 200
+    except requests.ConnectionError:
+        return False
+    except requests.Timeout:
+        return False
+
+
+def start_text2img_server() -> bool:
+    """Start text2img server as a subprocess. Returns True if started."""
+    global _server_process
+
+    if is_server_running():
+        print("  ✅ text2img server กำลังทำงานอยู่แล้ว")
+        return False  # didn't start it ourselves
+
+    if not os.path.isdir(TEXT2IMG_DIR):
+        print(f"  ❌ ไม่พบ text2img directory: {TEXT2IMG_DIR}")
+        print("     กรุณาติดตั้ง text2img/ ก่อน (ดู CLAUDE.md)")
+        sys.exit(1)
+
+    node_modules = os.path.join(TEXT2IMG_DIR, "node_modules")
+    if not os.path.isdir(node_modules):
+        print("  📦 ติดตั้ง text2img dependencies...")
+        subprocess.run(["npm", "install"], cwd=TEXT2IMG_DIR, capture_output=True, check=True)
+
+    print(f"  🚀 กำลังเปิด text2img server (port {TEXT2IMG_PORT})...")
+    _server_process = subprocess.Popen(
+        ["node", "src/server.js"],
+        cwd=TEXT2IMG_DIR,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
+
+    # Wait for server to be ready
+    for i in range(30):
+        time.sleep(1)
+        if is_server_running():
+            print(f"  ✅ text2img server พร้อมใช้งาน (PID: {_server_process.pid})")
+            return True
+        if _server_process.poll() is not None:
+            stderr = _server_process.stderr.read().decode() if _server_process.stderr else ""
+            print(f"  ❌ text2img server ปิดตัวเอง: {stderr[:500]}")
+            sys.exit(1)
+
+    print("  ❌ text2img server ไม่พร้อมภายใน 30 วินาที")
+    stop_text2img_server()
+    sys.exit(1)
+
+
+def stop_text2img_server():
+    """Stop the text2img server if we started it."""
+    global _server_process
+    if _server_process is None:
+        return
+    if _server_process.poll() is not None:
+        _server_process = None
+        return
+
+    print(f"  🛑 กำลังปิด text2img server (PID: {_server_process.pid})...")
+    _server_process.terminate()
+    try:
+        _server_process.wait(timeout=5)
+    except subprocess.TimeoutExpired:
+        _server_process.kill()
+        _server_process.wait()
+    _server_process = None
+    print("  ✅ text2img server ปิดแล้ว")
+
+
+# Register cleanup for unexpected exits
+atexit.register(stop_text2img_server)
 
 
 # ---------------------------------------------------------------------------
@@ -417,6 +505,8 @@ def main():
                         help="output directory (default: ./output)")
     parser.add_argument("--prompts", type=str, default=None,
                         help="path ไปยัง prompts.json (default: ./prompts.json)")
+    parser.add_argument("--no-auto-server", action="store_true",
+                        help="ไม่ auto-start text2img server (ใช้เมื่อเปิด server เองแล้ว)")
     args = parser.parse_args()
 
     audio_path = os.path.abspath(args.audio)
@@ -441,61 +531,73 @@ def main():
         print(f"  Style:      {args.style}")
     print()
 
-    # Step 1: Transcribe
-    print("📝 Step 1: Transcribe Audio")
-    if args.skip_transcribe:
-        cache_path = os.path.join(output_dir, "segments.json")
-        if not os.path.exists(cache_path):
-            print(f"  ❌ --skip-transcribe แต่ไม่พบ {cache_path}")
-            sys.exit(1)
-        with open(cache_path) as f:
-            segments = json.load(f)
-        print(f"  ⏩ ข้าม transcription, ใช้ cache ({len(segments)} segments)")
-    else:
-        segments = transcribe_audio(audio_path, output_dir)
-    print()
+    # Auto-start text2img server
+    we_started_server = False
+    if not args.no_auto_server and not args.skip_images:
+        print("🔌 Server: ตรวจสอบ text2img server...")
+        we_started_server = start_text2img_server()
+        print()
 
-    if not segments:
-        print("❌ ไม่พบ segments จาก transcription")
-        sys.exit(1)
-
-    # Step 1.5: Load AI prompts
-    print("📋 Step 1.5: Load AI Prompts")
-    prompts = load_prompts(prompts_path, len(segments))
-    print()
-
-    # Step 2: Generate Images
-    print("🎨 Step 2: Generate Images")
-    if args.skip_images:
-        images_dir = os.path.join(output_dir, "images")
-        image_paths = sorted(
-            [os.path.join(images_dir, f) for f in os.listdir(images_dir)
-             if f.startswith("seg_") and f.endswith(".png")]
-        )
-        if len(image_paths) < len(segments):
-            print(f"  ⚠️ มีรูปแค่ {len(image_paths)}/{len(segments)} — สร้างรูปที่ขาด...")
-            image_paths = generate_images(segments, prompts, output_dir, args.resolution, args.style)
+    try:
+        # Step 1: Transcribe
+        print("📝 Step 1: Transcribe Audio")
+        if args.skip_transcribe:
+            cache_path = os.path.join(output_dir, "segments.json")
+            if not os.path.exists(cache_path):
+                print(f"  ❌ --skip-transcribe แต่ไม่พบ {cache_path}")
+                sys.exit(1)
+            with open(cache_path) as f:
+                segments = json.load(f)
+            print(f"  ⏩ ข้าม transcription, ใช้ cache ({len(segments)} segments)")
         else:
-            print(f"  ⏩ ข้าม image generation, ใช้รูปที่มี ({len(image_paths)} รูป)")
-    else:
-        image_paths = generate_images(segments, prompts, output_dir, args.resolution, args.style)
-    print()
+            segments = transcribe_audio(audio_path, output_dir)
+        print()
 
-    # Step 3: Resize
-    print("📐 Step 3: Resize Images")
-    image_paths = resize_images(image_paths, args.resolution)
-    print()
+        if not segments:
+            print("❌ ไม่พบ segments จาก transcription")
+            sys.exit(1)
 
-    # Step 4: Create Video
-    print("🎬 Step 4: Create Video")
-    output_path = create_video(
-        segments, image_paths, audio_path, output_dir, args.resolution, args.viz
-    )
-    print()
+        # Step 1.5: Load AI prompts
+        print("📋 Step 1.5: Load AI Prompts")
+        prompts = load_prompts(prompts_path, len(segments))
+        print()
 
-    print("=" * 60)
-    print(f"🎉 เสร็จสมบูรณ์! Video อยู่ที่: {output_path}")
-    print("=" * 60)
+        # Step 2: Generate Images
+        print("🎨 Step 2: Generate Images")
+        if args.skip_images:
+            images_dir = os.path.join(output_dir, "images")
+            image_paths = sorted(
+                [os.path.join(images_dir, f) for f in os.listdir(images_dir)
+                 if f.startswith("seg_") and f.endswith(".png")]
+            )
+            if len(image_paths) < len(segments):
+                print(f"  ⚠️ มีรูปแค่ {len(image_paths)}/{len(segments)} — สร้างรูปที่ขาด...")
+                image_paths = generate_images(segments, prompts, output_dir, args.resolution, args.style)
+            else:
+                print(f"  ⏩ ข้าม image generation, ใช้รูปที่มี ({len(image_paths)} รูป)")
+        else:
+            image_paths = generate_images(segments, prompts, output_dir, args.resolution, args.style)
+        print()
+
+        # Step 3: Resize
+        print("📐 Step 3: Resize Images")
+        image_paths = resize_images(image_paths, args.resolution)
+        print()
+
+        # Step 4: Create Video
+        print("🎬 Step 4: Create Video")
+        output_path = create_video(
+            segments, image_paths, audio_path, output_dir, args.resolution, args.viz
+        )
+        print()
+
+        print("=" * 60)
+        print(f"🎉 เสร็จสมบูรณ์! Video อยู่ที่: {output_path}")
+        print("=" * 60)
+
+    finally:
+        if we_started_server:
+            stop_text2img_server()
 
 
 if __name__ == "__main__":

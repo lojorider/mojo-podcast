@@ -1,0 +1,490 @@
+openapi: 3.0.3
+info:
+  title: Text2Img API
+  description: AI image generation API using Cloudflare Workers AI (FLUX-1-Schnell)
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:3210
+    description: Local development
+
+paths:
+  /:
+    get:
+      summary: Service metadata
+      description: Returns service information, version, and available endpoints
+      operationId: getServiceInfo
+      responses:
+        '200':
+          description: Service metadata
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    example: text2img
+                  version:
+                    type: string
+                    example: 1.0.0
+                  description:
+                    type: string
+                  status:
+                    type: string
+                    example: running
+                  endpoints:
+                    type: object
+                    properties:
+                      health:
+                        type: string
+                        example: /api/health
+                      generate:
+                        type: string
+                        example: POST /api/generate
+                      generateIcon:
+                        type: string
+                        example: POST /api/generate/icon
+                      docs:
+                        type: string
+                        example: /docs/openapi.yaml
+                  documentation:
+                    type: string
+                    example: /docs/openapi.yaml
+
+  /api/health:
+    get:
+      summary: Health check
+      operationId: healthCheck
+      responses:
+        '200':
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  service:
+                    type: string
+                    example: text2img
+
+  /api/generate:
+    post:
+      summary: Generate image from text prompt
+      operationId: generateImage
+      parameters:
+        - name: format
+          in: query
+          description: Response format
+          schema:
+            type: string
+            enum: [base64, binary]
+            default: base64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [prompt]
+              properties:
+                prompt:
+                  type: string
+                  description: Text prompt for image generation
+                  example: Thai restaurant interior, modern design
+                size:
+                  type: string
+                  description: Image dimensions (WxH)
+                  default: 1024x1024
+                  example: 1024x1024
+                steps:
+                  type: integer
+                  description: Number of diffusion steps
+                  default: 4
+                  minimum: 1
+                  maximum: 20
+                guidance:
+                  type: number
+                  description: Guidance scale
+                  default: 7.5
+                quality:
+                  type: integer
+                  description: Output quality (1-100)
+                  default: 85
+                  minimum: 1
+                  maximum: 100
+                optimize:
+                  type: boolean
+                  description: Apply image optimizations
+                  default: false
+                outputFormat:
+                  type: string
+                  description: "Output image format. Defaults to source format from AI (currently JPEG)."
+                  enum: [png, jpg, webp]
+                resize:
+                  type: string
+                  nullable: true
+                  description: Resize dimensions (WxH)
+                  example: 512x512
+                responsive:
+                  type: boolean
+                  description: Generate responsive variants
+                  default: false
+                responsiveSizes:
+                  type: array
+                  items:
+                    type: integer
+                  default: [480, 768, 1024, 1920]
+                enhancePrompt:
+                  type: boolean
+                  description: Auto-enhance prompt with context modifiers
+                  default: true
+                style:
+                  type: string
+                  description: Style hint for prompt enhancement
+                  enum: [hero, icon, category, food, menu, pos, tablet, staff, waiter, interior, dining]
+      responses:
+        '200':
+          description: Image generated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: object
+                    properties:
+                      image:
+                        type: string
+                        description: Base64-encoded image
+                      format:
+                        type: string
+                        example: png
+                      width:
+                        type: integer
+                        example: 1024
+                      height:
+                        type: integer
+                        example: 1024
+                      prompt:
+                        type: string
+                      enhancedPrompt:
+                        type: string
+                      variants:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            width:
+                              type: integer
+                            image:
+                              type: string
+            image/png:
+              schema:
+                type: string
+                format: binary
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+            image/webp:
+              schema:
+                type: string
+                format: binary
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /api/generate/icon:
+    post:
+      summary: Generate icon set from text prompt with auto-trim die-cut
+      description: |
+        Generates a complete icon set from an AI-generated image. The pipeline
+        auto-trims excess background, resizes content to fill the icon area,
+        and applies die-cut rounded corners (appIcon). Prompt is automatically
+        enhanced with icon-specific modifiers for optimal results.
+      operationId: generateIconSet
+      parameters:
+        - name: format
+          in: query
+          description: Response format (base64 JSON or ZIP download)
+          schema:
+            type: string
+            enum: [base64, zip]
+            default: base64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [prompt, preset]
+              properties:
+                prompt:
+                  type: string
+                  description: Text prompt for icon generation
+                  example: modern restaurant logo with fork and flame
+                preset:
+                  type: string
+                  description: Icon preset type
+                  enum: [appIcon, menuBar, favicon, all]
+                  example: appIcon
+                size:
+                  type: string
+                  description: AI canvas dimensions
+                  default: 1024x1024
+                steps:
+                  type: integer
+                  description: Number of diffusion steps
+                  default: 4
+                  minimum: 1
+                  maximum: 20
+                guidance:
+                  type: number
+                  description: Guidance scale
+                  default: 7.5
+                enhancePrompt:
+                  type: boolean
+                  description: Auto-enhance prompt with icon-specific modifiers
+                  default: true
+                background:
+                  type: string
+                  description: "Background color: 'transparent' or hex (e.g. '#FF6600')"
+                  default: transparent
+                cornerRadius:
+                  type: number
+                  description: Corner radius ratio for appIcon (Apple standard ~0.22)
+                  default: 0.22
+                  minimum: 0
+                  maximum: 0.5
+                padding:
+                  type: number
+                  description: Padding ratio around icon content
+                  default: 0
+                  minimum: 0
+                  maximum: 0.5
+                contentFill:
+                  type: number
+                  description: How much of the icon area the content should fill (appIcon only, used after auto-trim)
+                  default: 0.85
+                  minimum: 0.5
+                  maximum: 1.0
+      responses:
+        '200':
+          description: Icon set generated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: object
+                    properties:
+                      prompt:
+                        type: string
+                      enhancedPrompt:
+                        type: string
+                      preset:
+                        type: string
+                        example: appIcon
+                      icons:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                              example: app-icon-1024.png
+                            label:
+                              type: string
+                              example: App Icon 1024x1024
+                            width:
+                              type: integer
+                              example: 1024
+                            height:
+                              type: integer
+                              example: 1024
+                            format:
+                              type: string
+                              example: png
+                            image:
+                              type: string
+                              description: Base64-encoded image
+            application/zip:
+              schema:
+                type: string
+                format: binary
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /api/optimize:
+    post:
+      summary: Optimize an existing image
+      description: |
+        Resize, compress, and convert image format. Accepts both multipart
+        file upload and JSON with base64-encoded image.
+      operationId: optimizeImage
+      parameters:
+        - name: format
+          in: query
+          description: Response format
+          schema:
+            type: string
+            enum: [base64, binary]
+            default: base64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [image]
+              properties:
+                image:
+                  type: string
+                  description: Base64-encoded image
+                resize:
+                  type: object
+                  properties:
+                    width:
+                      type: integer
+                      example: 800
+                    height:
+                      type: integer
+                      example: 600
+                format:
+                  type: string
+                  enum: [png, jpg, jpeg, webp, avif]
+                  default: png
+                quality:
+                  type: integer
+                  description: Output quality (1-100)
+                  default: 80
+                  minimum: 1
+                  maximum: 100
+                fit:
+                  type: string
+                  enum: [cover, contain, fill, inside, outside]
+                  default: cover
+          multipart/form-data:
+            schema:
+              type: object
+              required: [image]
+              properties:
+                image:
+                  type: string
+                  format: binary
+                  description: Image file to optimize
+                resize:
+                  type: string
+                  description: 'JSON string, e.g. {"width":800,"height":600}'
+                format:
+                  type: string
+                  enum: [png, jpg, jpeg, webp, avif]
+                  default: png
+                quality:
+                  type: integer
+                  minimum: 1
+                  maximum: 100
+                  default: 80
+                fit:
+                  type: string
+                  enum: [cover, contain, fill, inside, outside]
+                  default: cover
+      responses:
+        '200':
+          description: Image optimized successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: object
+                    properties:
+                      image:
+                        type: string
+                        description: Base64-encoded optimized image
+                      format:
+                        type: string
+                        example: webp
+                      width:
+                        type: integer
+                        example: 800
+                      height:
+                        type: integer
+                        example: 600
+                      originalSize:
+                        type: integer
+                        description: Original file size in bytes
+                        example: 524288
+                      optimizedSize:
+                        type: integer
+                        description: Optimized file size in bytes
+                        example: 102400
+                      savings:
+                        type: string
+                        description: Size reduction percentage
+                        example: '80.5%'
+            image/png:
+              schema:
+                type: string
+                format: binary
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+            image/webp:
+              schema:
+                type: string
+                format: binary
+            image/avif:
+              schema:
+                type: string
+                format: binary
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+components:
+  responses:
+    BadRequest:
+      description: Invalid request
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: false
+              error:
+                type: string
+    ServerError:
+      description: Server error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: false
+              error:
+                type: string

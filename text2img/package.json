@@ -1,0 +1,26 @@
+{
+  "name": "text2img",
+  "version": "1.0.0",
+  "description": "Express API for AI image generation using Cloudflare Workers AI (FLUX-1-Schnell)",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "dependencies": {
+    "@google/genai": "^1.43.0",
+    "@openrouter/sdk": "^0.9.11",
+    "archiver": "^7.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "multer": "^2.0.2",
+    "node-fetch": "^3.3.2",
+    "sharp": "^0.33.2",
+    "sharp-ico": "^0.1.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
