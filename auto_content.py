@@ -433,7 +433,7 @@ def create_video(
     cx = margin_x // 2
     cy = margin_y // 2
     kenburns = (
-        f"[0:v]crop={w}:{h}"
+        f"[0:v]fps=25,crop={w}:{h}"
         f":'{cx}+sin(t/6)*{cx}'"
         f":'{cy}+cos(t/8)*{cy}'"
         f"[outv]"
